@@ -1,0 +1,65 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/roxie-rossa" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
+
+
+
+</head>
+
+<body class=" bg-no-repeat bg-center h-full">
+    <img class="fixed inset-0 w-full h-full object-cover" src="{% static 'images/bg.png' %}" alt="Background Image">
+    <header class="bg-primary text-white p-4 flex relative z-10 justify-between items-center">
+        <div class="logo">
+            <!-- Add your logo image here -->
+            <a href="{% url 'home' %}">
+                <svg class="lg:w-48  w-24 h-14 ">
+                    <use xlink:href="{% static 'svgs.svg' %}#logo-icon"></use>
+                </svg>
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'register' %}"
+                class="signup-button text-primary px-4 py-2 rounded-lg border border-primary text-transparent text-white focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300">Sign
+                up</a>
+
+
+        </div>
+    </header>
+
+    <main class="container mx-auto relative z-10 lg:mt-32 mt-32 flex flex-col items-center">
+        <div class="large-text text-center text-white lg:text-6xl text-4xl font-bold leading-tight mb-4"
+            style="font-family: 'Roxie Rossa', sans-serif;">
+            Unleash Your Inner</br> Strength with Ayla
+        </div>
+
+        <div class="text-center text-white mb-2 md:max-w-md mx-auto text-sm font-normal leading-normal">
+            Ayla is your trusty guide, ready to assist and support you through all aspects of your health, from
+            navigating menstrual cycles and fertility to embracing effective birth control options.
+        </div>
+
+        <div class="mt-4 text-primary px-4 py-2 rounded-lg flex items-center border border-white shadow-xs">
+            <a href="{% url 'login' %}"> <span class="mr-2 text-white">Chat with Ayla</span></a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <use xlink:href="{% static 'svgs.svg' %}#chat-icon"></use>
+            </svg>
+
+        </div>
+
+    </main>
+</body>
+
+</html>

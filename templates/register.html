@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/roxie-rossa" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
+</head>
+
+<body class="bg-black">
+    <header class="bg-primary text-white p-4 flex justify-between items-center  ">
+        <div class="relative flex items-center">
+            <!-- Add your logo image here -->
+            <div class="lg:absolute md:absolute lg:bottom-[-2] md:bottom-[-2]  left-5">
+                <a href="{% url 'home' %}">
+                    <svg class="lg:w-48 lg:h-48 w-24 h-24 mt-[-2]">
+                        <use xlink:href="{% static 'svgs.svg' %}#logo-icon"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="">
+            <a href="{% url 'login' %}" class="text-pink-600 px-4 py-2 rounded-lg border" style="border-radius: 0.5rem;
+          border: 1px solid #B40C60;
+          ">login</a>
+
+
+        </div>
+    </header>
+    <div class="flex items-center h-screen">
+        <div class="hidden md:block w-2/4 h-full object-cover mb-28 bg-cover bg-center"
+            style="background-image: url('https://github.com/AugustHottie/chatbot/assets/58889001/82ff1180-4b31-4a8b-b437-b99bb230d819');">
+        </div>
+        <div class="w-full md:w-2/5 px-6 py-8 mx-auto">
+            <div class="flex justify-center">
+                <p class="large-text text-center text-white lg:text-6xl text-4xl font-bold leading-tight mb-4"
+                    style="font-family: 'Roxie Rossa', sans-serif;">Create your account</p>
+            </div>
+            <div
+                class="text-center text-white mb-4  mx-auto text-sm font-normal leading-normal text-gray-300 font-inter">
+                Whether you're looking to track your menstrual cycles, explore fertility options,<br /> or learn about
+                effective birth control methods, Ayla has you covered.
+            </div>
+
+
+            <div>
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="input-group-1" class="block mt-4 text-sm font-medium text-white dark:text-white">Email
+                        Address</label>
+                    <div class="relative mb-6">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-white dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                                <path
+                                    d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+                                <path
+                                    d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="input-group-1"
+                            class="bg-transparent border-b border-[#949494] text-white text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full mx-auto p-2.5 pl-10 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter your email" name="email" />
+                    </div>
+
+                    <label for="input-group-1"
+                        class="block mt-4 text-sm font-medium text-white dark:text-white">Username</label>
+                    <div class="relative mb-6">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                            <svg class="w-5 h-5 fill-current text-gray-600">
+                                <use xlink:href="{% static 'svgs.svg' %}#username-icon"></use>
+                            </svg>
+                        </div>
+                        <input type="text" id="input-group-1"
+                            class="bg-transparent border-b border-[#949494] text-white text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full mx-auto p-2.5 pl-10 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter your Username" name="username" />
+                    </div>
+
+            </div>
+            <div class="py-2" x-data="{ show: true }">
+                <div>
+                    <label for="input-group-1"
+                        class="block mb-2 text-sm font-medium text-white dark:text-white">Password</label>
+                    <div class="relative mb-6">
+                        <input type="text" id="input-group-1"
+                            class="bg-transparent border-b border-[#949494] text-white text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10 pr-12 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Set password" name="password1" :type="show ? 'password' : 'text'" />
+                        <div class="absolute inset-y-0 w-8 right-0 pr-3 flex items-center text-sm leading-5">
+                            <svg class="h-4 text-gray-700" fill="none" @click="show = !show"
+                                :class="{'hidden': !show, 'block': show }">
+                                <use xlink:href="{% static 'svgs.svg' %}#icon-eye-open"></use>
+                            </svg>
+
+                            <svg class="h-4 text-gray-700" fill="none" @click="show = !show"
+                                :class="{'block': !show, 'hidden': show }">
+                                <use xlink:href="{% static 'svgs.svg' %}#icon-eye-closed"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-2" x-data="{ show: true }">
+                <div>
+                    <label for="input-group-1" class="block mb-2 text-sm font-medium text-white dark:text-white">Confirm
+                        Password</label>
+
+                    <div class="relative mb-6">
+                        <input type="text" id="input-group-1"
+                            class="bg-transparent border-b border-[#949494] text-white text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10 pr-12 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Confirm password" name="password2" :type="show ? 'password' : 'text'" />
+
+                        <div class="absolute inset-y-0 w-8 right-0 pr-3 flex items-center text-sm leading-5">
+                            <svg class="h-4 text-gray-700" fill="none" @click="show = !show"
+                                :class="{'hidden': !show, 'block': show }">
+                                <use xlink:href="{% static 'svgs.svg' %}#icon-eye-open"></use>
+                            </svg>
+
+                            <svg class="h-4 text-gray-700" fill="none" @click="show = !show"
+                                :class="{'block': !show, 'hidden': show }">
+                                <use xlink:href="{% static 'svgs.svg' %}#icon-eye-closed"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button class="px-4 text-pink-600  w-full py-2 rounded-lg " href="{% url 'register' %}" style="border-radius: 0.5rem;
+        border: 1px solid #B40C60;
+        ">
+                Sign up
+            </button>
+            <div class="mt-4 text-center">
+                <p class="text-sm text-white mt-4">Already have an account? <a href="{% url 'login' %}"
+                        class="text-pink-600 ">
+                        Login.</a></p>
+            </div>
+            <!-- Display messages -->
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                document.querySelectorAll('.messages').forEach(function (message) {
+                    message.style.display = 'none';
+                });
+            }, 5000);
+        });
+    </script>
+</body>
+
+</html>
